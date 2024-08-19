@@ -9,6 +9,7 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
@@ -18,6 +19,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "movimentacao")
+@EntityListeners(AuditingEntityListener.class)
 public class Movimentacao {
 
     @Id
@@ -38,7 +40,7 @@ public class Movimentacao {
 
     @JoinColumn(name = "movimentacao_conta_id")
     @OneToOne
-    private MovimentacaoCategoria movimentacaoContaId;
+    private Conta movimentacaoContaId;
 
     @JoinColumn(name = "movimentacao_colaborador_id")
     @OneToOne
